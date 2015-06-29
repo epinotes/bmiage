@@ -3,8 +3,8 @@
 \name{bmicat}
 \alias{bmicat}
 \title{Calculate the bmi and classify it into
-underweight, healthy weight,overweight and obese,
-based on CDC's BMI reference tables for age and sex}
+underweight (0), healthy weight (1),overweight (2) and obese (3),
+based on CDC's BMI reference tables for age and sex.}
 \usage{
 bmicat(data = NULL, sex, age, wt.kg, ht.m, age.unit = c("none", "year",
   "month"), bind = T)
@@ -25,13 +25,15 @@ the parameters sex, age, wt.kg and ht.m.}
 \item{age.unit}{Character. The age unit ("month" or "year")}
 
 \item{bind}{Logical. TRUE or FALSE.
-Add the two new variable to the data provided.
-They the calculated BMI and the BMI categories}
+Add the two new variables to the data provided.
+They are the calculated BMI (bmi) and the BMI categories (bmicat).
+The variable "bmicat" is coded as numeric from 0,1,2 or 3 for
+respectively "underweight", "healthy weight", "overweight" and "obesity"}
 }
 \description{
 Calculate the bmi and classify it into
-underweight, healthy weight,overweight and obese,
-based on CDC's BMI reference tables for age and sex
+underweight (0), healthy weight (1),overweight (2) and obese (3),
+based on CDC's BMI reference tables for age and sex.
 }
 \examples{
 No dataset provided

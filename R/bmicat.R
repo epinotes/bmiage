@@ -1,6 +1,7 @@
 #' Calculate the bmi and classify it into 
-#' underweight, healthy weight,overweight and obese,
-#' based on CDC's BMI reference tables for age and sex 
+#' underweight (0), healthy weight (1),overweight (2) and obese (3),
+#' based on CDC's BMI reference tables for age and sex.
+#' 
 #' 
 #' @param data A data frame. The default is NULL.
 #' When the data frame is provided, use the corresponding variables for
@@ -11,8 +12,10 @@
 #' @param ht.m Numeric. Height in meters
 #' @param age.unit Character. The age unit ("month" or "year")
 #' @param bind Logical. TRUE or FALSE.
-#' Add the two new variable to the data provided.
-#' They the calculated BMI and the BMI categories 
+#' Add the two new variables to the data provided.
+#' They are the calculated BMI (bmi) and the BMI categories (bmicat).
+#' The variable "bmicat" is coded as numeric from 0,1,2 or 3 for
+#' respectively "underweight", "healthy weight", "overweight" and "obesity" 
 #' @export
 #' @examples
 #' 

@@ -1,11 +1,37 @@
-
+#' Calculate the bmi and classify it into 
+#' underweight, healthy weight,overweight and obese,
+#' based on CDC's BMI reference tables for age and sex 
+#' 
+#' @param data A data frame. The default is NULL.
+#' When the data frame is provided, use the corresponding variables for
+#' the parameters sex, age, wt.kg and ht.m.
+#' @param sex Character. "F", "M"
+#' @param age Numeric. In months or years
+#' @param wt.kg Numeric. Weight in kg
+#' @param ht.m Numeric. Height in meters
+#' @param age.unit Character. The age unit ("month" or "year")
+#' @param bind Logical. TRUE or FALSE.
+#' Add the two new variable to the data provided.
+#' They the calculated BMI and the BMI categories 
+#' @export
+#' @examples
+#' 
+#' No dataset provided
+#' 
+#' bmicat(data = NULL,sex = "F",age = 18,wt.kg = 70 ,ht.m = 1.75, age.unit="year",bind = F)
+#' 
+#' Create and provide data frame df first:
+#' 
+#' df <- data.frame(sex = c("F","M", "F"), age = c(18,15,NA), weight = c(70,50, 55), height = c(1.75, 1.60, 1.65))
+#' 
+#' Use the new data frame, df with the function bmicat:
+#' 
+#' bmicat(data = df,sex = sex,age = age,wt.kg = weight ,ht.m = height, age.unit="year",bind = T)
 bmicat <-function(data = NULL,sex,age,wt.kg ,ht.m, age.unit=c("none","year","month"),bind = T){
   
-# to calculate the bmi and classify into underweight, healthy weight,
-# overweight and obese based cdc on references table for age and sex
-  
-  #require(dplyr)
-  #require(foreach)
+
+  require(dplyr)
+  require(foreach)
   
   
   if(!(age.unit %in% c("year","month")) ) stop("select an age.unit argument as 'month' or 'year'")
@@ -30,7 +56,9 @@ bmicat <-function(data = NULL,sex,age,wt.kg ,ht.m, age.unit=c("none","year","mon
     bmi2["id"] <- lapply( bmi2["id"], as.character)
     bmi3 <- left_join(bmi2,ref,by="id")
     bmistatus <- bmi3 %>% mutate(bmicat = (s_bmi > bmi)) %>% summarise(sum(bmicat))
-    data.frame(bmi = bmi3$s_bmi[1],bmicat = unname(unlist(bmistatus)))
+  dat2 <- data.frame(bmi = bmi3$s_bmi[1],bmicat = unname(unlist(bmistatus)))
+  dat2$bmicat[dat2$bmi > 30] <- 3
+  return(dat2)
     
   }
   

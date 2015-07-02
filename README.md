@@ -23,6 +23,10 @@ devtools::install_github("epinotes/bmiage")
  
 # Use the new data frame, df with the function bmicat:
  
- bmicat(data = df,sex = sex,age = age,wt.kg = weight ,ht.m = height, age.unit="year",bind = T)
+ df <- bmicat(data = df,sex = sex,age = age,wt.kg = weight ,ht.m = height, age.unit="year",bind = T)
+ 
+ # Now df has two added variables  
+ 
+ df
 
 ```

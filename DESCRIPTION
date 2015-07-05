@@ -5,7 +5,7 @@ Version: 0.0.0.9000
 Date: 2015-04-04
 Author: Mamadou Ndiaye
 Maintainer: Mamadou Ndiaye <epinotes@gmail.com>
-Description: Calculate BMI for child (2 to 20) and classify the results the results into four categories: underweight, healthy weight, overweight and obese. The classification is based on CDC reference charts for BMI for age and sex.
+Description: Calculate BMI for child (2 to 20) and classify the results the into four categories: underweight, healthy weight, overweight and obesity. The classification is based on CDC reference charts for BMI for age and sex.
 License: GPL-3
 Imports: dplyr,
     foreach,
